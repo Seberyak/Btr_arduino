@@ -6,6 +6,7 @@
 
 
   void convert(){
+              digitalWrite(l_forward,0);  digitalWrite(r_forward,0);  digitalWrite(l_back,0); digitalWrite(r_back,0);
               if(s[0]=='W' and s[1]=='y' or s[0]=='y' and s[1]=='W'){ digitalWrite(l_forward,1);digitalWrite(r_forward,1);
               Serial.print(0);Serial.print(':');Serial.println(1); Serial.print(2);Serial.print(':');Serial.println(1);}
               
@@ -32,7 +33,7 @@
         else if (s[0]=='D' and s[1]=='y' or s[0]=='y' and s[1]=='D'){ digitalWrite(l_forward,1);digitalWrite(r_back,1);
         Serial.print(0);Serial.print(':');Serial.println(1);Serial.print(3);Serial.print(':');Serial.println(1);}
         
-        else {digitalWrite(l_forward,0);  digitalWrite(r_forward,0);  digitalWrite(l_back,0); digitalWrite(r_back,0);}
+        else {}
         
         
         }

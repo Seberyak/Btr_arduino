@@ -6,36 +6,43 @@
 
 void setup() {
  
- pinMode(30,INPUT);
- pinMode(31,INPUT);
- pinMode(32,INPUT);
- pinMode(33,INPUT);
+ pinMode(A0,INPUT);
+ pinMode(A1,INPUT);
+ pinMode(A2,INPUT);
+ pinMode(A3,INPUT);
 
- for(int i=2;i<=13;i++)
- pinMode(i,OUTPUT);
+ for(int i=2;i<=13;i++) pinMode(i,OUTPUT);
 
  
   Serial.begin(9600);
 }
-
+int power=255;
 void loop() {
-    for(int i=1;i<=3;i++){
-    analogWrite(i*l_forward,digitalRead(30)*255);
-    analogWrite(i*l_back,digitalRead(31)*255);
-    analogWrite(i*r_forward,digitalRead(32)*255);
-    analogWrite(i*r_back,digitalRead(33)*255);
-    }
-  for(int i=30;i<34;i++){
-    if(digitalRead(i)){
-   Serial.print(i-30);Serial.print(':');Serial.println(digitalRead(i));
-   //Serial.print(1);Serial.print(':');Serial.println(digitalRead(3));
-   //Serial.print(2);Serial.print(':');Serial.println(digitalRead(4));
-   //Serial.print(3);Serial.print(':');Serial.println(digitalRead(5));
+    
+    analogWrite(2,digitalRead(A0)*power);
+    analogWrite(3,digitalRead(A1)*power);
+    analogWrite(4,digitalRead(A2)*power);
+    analogWrite(5,digitalRead(A3)*power);
+    analogWrite(6,digitalRead(A0)*power);
+    analogWrite(7,digitalRead(A1)*power);
+    analogWrite(8,digitalRead(A2)*power);
+    analogWrite(9,digitalRead(A3)*power);
+    analogWrite(10,digitalRead(A0)*power);
+    analogWrite(11,digitalRead(A1)*power);
+    analogWrite(12,digitalRead(A2)*power);
+    analogWrite(13,digitalRead(A3)*power);
+    
+
+  
+   Serial.print(0);Serial.print(':');Serial.println(digitalRead(A0));
+   Serial.print(1);Serial.print(':');Serial.println(digitalRead(A1));
+   Serial.print(2);Serial.print(':');Serial.println(digitalRead(A2));
+   Serial.print(3);Serial.print(':');Serial.println(digitalRead(A3));
    Serial.println();
   // break;
-  }
   
-  }
+  
+  
     
-    //delay(100);
+    //delay(200);
 }

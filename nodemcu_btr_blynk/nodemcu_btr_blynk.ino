@@ -2,10 +2,10 @@
 #define BLYNK_PRINT Serial
 #define l_forward D0
 #define l_back D1
-#define r_forward D2
-#define r_back D4
+#define r_forward D5
+#define r_back D6
 
-#include <ESP8266WiFi.h>
+//#include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(D2, D3); // RX, TX == D3//
@@ -15,8 +15,8 @@ char auth[] = "fb3d5a278934461eb61aed25704d2573";
 String s,s1;
 // Your WiFi credentials.
 // Set password to "" for open networks.
-char ssid[] = "CU_STUDENTS";
-char pass[] = "CUcu2019";
+char ssid[] = "SVANSKY" ;//"CU_STUDENTS";
+char pass[] = "levani1999";//"CUcu2019";
 
 BLYNK_WRITE (V8){
   s=param.asString();
