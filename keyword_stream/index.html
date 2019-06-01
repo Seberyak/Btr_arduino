@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p></p>
+
+
+</body>
+</html>
+
+<script>
+var s='';
+var canvas = document.createElement('canvas'),
+    ctx = canvas.getContext('2d'),
+    W,H,
+    key = [];
+canvas.tabIndex = 0;
+canvas.width = W = 1200;
+canvas.height = H = 1200;
+ctx.font = 'bold 22px Courier New';
+ctx.textBaseline = 'top';
+ctx.textAlign = 'center';
+document.body.appendChild(canvas);
+//  document.body.appendChild((function(){var p = document.createElement('p');p.innerHTML = "<p>To use this, click the above box and press some keys.</p>"; return p;})());
+canvas.focus();
+document.body.onmouseover = function(){
+    canvas.focus();
+}
+canvas.onkeydown = canvas.onkeyup = function(e){
+    var e = e || event;
+    key[e.keyCode] = e.type == 'keydown';
+};
+(function loop(){
+    //ctx.clearRect(0,0,W,H);
+    var y = 0, l = key.length, i, t,o="";
+    for(i = 0; i < l; i ++){
+        if(key[i]){
+            o+=String.fromCharCode(i);
+          }
+
+    }
+    //
+    if(o.length==1) o+="y";
+
+    if(s!=o) {
+      s=o;
+
+      console.log('length='+s.length);
+
+      sendrequest(s);
+
+    }
+    setTimeout(loop,1000/24);
+})();
+
+
+function sendrequest(str) {
+  var request = new XMLHttpRequest();
+  var pin='V8';
+  var st='http://blynk-cloud.com/fb3d5a278934461eb61aed25704d2573/update/';
+  st+=pin+'?value='+str;
+  //console.log(st);
+  request.open('GET',st);
+
+  request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      console.log('Status:', this.status);
+      console.log('Headers:', this.getAllResponseHeaders());
+      console.log('Body:', this.responseText);
+    }
+  };
+
+  request.send();
+}
+/*
+function logic(str) {
+if( (str.includes('W'))  ) {
+  var pins='W';
+  sendrequest(pins);
+};
+else if(str.includes('S') and str.includes(' ')){
+  var pins='S';
+  sendrequest(pins);
+}
+else if(str.includes('A') and str.includes(' ')){
+  var pins='A';
+  sendrequest(pins);
+}
+else if(str.includes('D') and str.includes(' ')){
+  var pins='D';
+  sendrequest(pins);
+}
+
+else if(str.includes('W') and str.includes('A')){
+  var pins='WA';
+  sendrequest(pins);
+}
+else if(str.includes('W') and str.includes('D')){
+  var pins='WD';
+  sendrequest(pins);
+}
+else if(str.includes('S') and str.includes('A')){
+  var pins='SA';
+  sendrequest(pins);
+}
+else if(str.includes('S') and str.includes('D')){
+  var pins='SD';
+  sendrequest(pins);
+}*/
+
+
+
+
+
+
+</script>
